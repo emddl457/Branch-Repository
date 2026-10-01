@@ -1,0 +1,25 @@
+import random
+import string
+
+def generate_password(length: int = 12) -> str:
+    """영문 대소문자, 숫자, 특수문자를 포함한 랜덤 비밀번호 생성기"""
+    characters = string.ascii_letters + string.digits + string.punctuation
+    
+    # 각 조건의 문자가 최소 1개씩은 포함되도록 보장
+    password = [
+        random.choice(string.ascii_lowercase),
+        random.choice(string.ascii_uppercase),
+        random.choice(string.digits),
+        random.choice(string.punctuation)
+    ]
+    
+    # 나머지 길이는 랜덤하게 채움
+    password += [random.choice(characters) for _ in range(length - 4)]
+    
+    # 리스트를 섞은 후 문자열로 변환
+    random.shuffle(password)
+    return ''.join(password)
+
+if __name__ == "__main__":
+    print(f"기본 비밀번호 (12자리): {generate_password()}")
+    print(f"강력한 비밀번호 (16자리): {generate_password(16)}")
