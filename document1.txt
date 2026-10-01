@@ -15,8 +15,11 @@ def partition(l, r, nums):
 # for the right values.
  
  
-def quicksort(l, r, nums):
-    if len(nums) == 1:  # Terminating Condition for recursion. VERY IMPORTANT!
+def quicksort(l: int, r: int, nums: List[int]) -> List[int]:
+    """
+    분할된 위치를 기준으로 재귀적으로 퀵 정렬을 수행합니다.
+    """
+    if len(nums) <= 1:  # Terminating Condition for recursion. 빈 리스트 예외 처리(<= 1) 추가!
         return nums
     if l < r:
         pi = partition(l, r, nums)
