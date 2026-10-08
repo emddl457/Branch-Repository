@@ -1,0 +1,21 @@
+import time
+from functools import wraps
+
+def timer_decorator(func):
+    """함수의 실행 시간을 측정하는 데코레이터"""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"[{func.__name__}] 실행 시간: {end_time - start_time:.4f}초")
+        return result
+    return wrapper
+
+@timer_decorator
+def example_task():
+    """테스트용 함수: 1부터 100만까지의 제곱합 계산"""
+    return sum(i * i for i in range(1000000))
+
+if __name__ == "__main__":
+    example_task()
