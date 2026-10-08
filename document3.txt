@@ -1,4 +1,4 @@
-import time
+컴퓨터공학과
 from functools import wraps
 
 def timer_decorator(func):
